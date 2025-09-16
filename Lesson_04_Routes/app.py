@@ -40,6 +40,15 @@ def calculator(num1, operation, num2):
         return f"{num1} {operation} {num2} = {result}"
     else:
         return f"Unknown operations!{operation}"
+    
+@app.route("/temp/<type>/<int:num>", methods=['GET'])
+def tempconvert(type, num):
+    if (type.lower() == 'f'):
+        return f"{num} °F = {(5/9)*(num-32)} °C"
+    elif (type.lower() == 'c'):
+        return f"{num} °C = {((9/5)*num)+32} °F"
+    else:
+        return f"Unknown conversion! {type}"
 
 if __name__ == '__main__':
     app.run(debug=True)
